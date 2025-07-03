@@ -65,7 +65,7 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
     
    - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
 
->           // GPIO number used for I2C master clock
+>          // GPIO number used for I2C master clock
 >	   #define I2C_MASTER_SCL_IO           GPIO_NUM_3
 >	
 >	   // GPIO number used for I2C master data
@@ -79,7 +79,7 @@ clock rate could reduce any signal integrity issues but in actuality (at least w
   
 - Carefully **set up your idf build** as follows:
 ```bash
-          >cd <Project Directory>
+                  >cd <Project Directory>
 		  >rm -rf build/
 		  >idf.py set-target esp32c6
 		  >idf.py build
