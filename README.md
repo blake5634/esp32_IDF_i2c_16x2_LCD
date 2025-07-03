@@ -1,5 +1,5 @@
 # 16x2 LCD via i2C working example
-###This  repo is modified from [*voidloopprobotech*'s](https://github.com/voidlooprobotech) [Excellent Github Resource:](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)      ["14_I2C_LCD_16x2"](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)
+#### This  repo is modified from [*voidloopprobotech*'s](https://github.com/voidlooprobotech) [Excellent Github Resource:](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)      ["14_I2C_LCD_16x2"](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)
 
 [Voidloop's  video](https://www.youtube.com/watch?v=L955fIgIHu8)
 
@@ -59,17 +59,17 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
     
     - Check your backpack chip number and your i2c device address as follows (use one of these two
     defines):
->         #define SLAVE_ADDRESS_LCD 0x3f      // 8574A
->         #define SLAVE_ADDRESS_LCD 0x27      // 8574
+         #define SLAVE_ADDRESS_LCD 0x3f      // 8574A
+         #define SLAVE_ADDRESS_LCD 0x27      // 8574
     
-    - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
->	   // GPIO number used for I2C master clock
->	   #define I2C_MASTER_SCL_IO           GPIO_NUM_3
->	
->	   // GPIO number used for I2C master data
->	   #define I2C_MASTER_SDA_IO           GPIO_NUM_5
+   - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
+	   // GPIO number used for I2C master clock
+	   #define I2C_MASTER_SCL_IO           GPIO_NUM_3
+	
+	   // GPIO number used for I2C master data
+	   #define I2C_MASTER_SDA_IO           GPIO_NUM_5
 
-    - Do not modify i2c clockrate!   It is set right now  at 400kHz.  In theory, a slower 
+   - Do not modify i2c clockrate!   It is set right now  at 400kHz.  In theory, a slower 
 clock rate could reduce any signal integrity issues but in actuality (at least with my hardware) the backpack doesn't work (scrambled characters) at e.g. 100kHz(!)     Change clock rate at your own risk. 
 >       // I2C master clock frequency
 >       #define I2C_MASTER_FREQ_HZ          400000
