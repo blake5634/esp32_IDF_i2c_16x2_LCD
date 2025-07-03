@@ -1,5 +1,5 @@
 # 16x2 LCD via i2C working example
-####This  repo is modified from [*voidloopprobotech*'s](https://github.com/voidlooprobotech) [Excellent Github Resource:](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)      ["14_I2C_LCD_16x2"](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)
+###This  repo is modified from [*voidloopprobotech*'s](https://github.com/voidlooprobotech) [Excellent Github Resource:](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)      ["14_I2C_LCD_16x2"](https://github.com/voidlooprobotech/ESP32_ESP-IDF_Code/tree/main/14_I2C_LCD_16x2)
 
 [Voidloop's  video](https://www.youtube.com/watch?v=L955fIgIHu8)
 
@@ -9,7 +9,7 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
 - "Old" and "New" i2c libraries for ESP-IDF.    Reading tutorials and example code is very confusing because most people don't identify what they are using. 
 - Watch for subtle details of the examples out there.  For example, did they use an i2c backpack? or hard wire directly  to the LCD using 6 GPIO's (totally different sw). 
 - AI "helpers" are also totally confused by these details so they are only occasionally helpful.
-- Lots of advice out there on hardware problems like pullups and signal integrity, but they were a waste of time for me.    If the hookup you have would work on an Arduino, (i.e. Arduino hardware), then it will work with the ESP32.   Of course check and double check your wiring but in the end there were no signal integrity roadblocks with this hardware setup and random looking wiring.
+- Lots of advice out there on hardware problems like pullups and signal integrity, but they were a waste of time for me (using my oscilloscope).    If the hookup you have would work on an Arduino, (i.e. Arduino hardware), then it will work with the ESP32.   Of course check and double check your wiring but in the end there were no signal integrity roadblocks with this hardware setup and random looking wiring.
 - Delays had to be added to main.c after lcd_init() lcd_clear() etc. to get clear stable output.  I used the microsecond sleep function, usleep(int), but in a real app these should be changed to vTaskDelay(ticks) calls because I believe usleep() is blocking the whole CPU. 
 
 -  **Hardware:** 
@@ -56,11 +56,12 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
 
 
 -  **Modify i2c_lcd.h** according to your specific hardware as follows:
+    
     - Check your backpack chip number and your i2c device address as follows (use one of these two
     defines):
 >         #define SLAVE_ADDRESS_LCD 0x3f      // 8574A
 >         #define SLAVE_ADDRESS_LCD 0x27      // 8574
-
+    
     - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
 >	   // GPIO number used for I2C master clock
 >	   #define I2C_MASTER_SCL_IO           GPIO_NUM_3
@@ -68,7 +69,7 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
 >	   // GPIO number used for I2C master data
 >	   #define I2C_MASTER_SDA_IO           GPIO_NUM_5
 
-     - Do not modify i2c clockrate!   It is set right now  at 400kHz.  In theory, a slower 
+    - Do not modify i2c clockrate!   It is set right now  at 400kHz.  In theory, a slower 
 clock rate could reduce any signal integrity issues but in actuality (at least with my hardware) the backpack doesn't work (scrambled characters) at e.g. 100kHz(!)     Change clock rate at your own risk. 
 >       // I2C master clock frequency
 >       #define I2C_MASTER_FREQ_HZ          400000
