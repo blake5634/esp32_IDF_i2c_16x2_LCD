@@ -19,17 +19,17 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
 
     -  Cheap 16x2 LCD with backpack: [(example)](https://www.amazon.com/GeeekPi-Character-Backlight-Raspberry-Electrical/dp/B07S7PJYM6/ref=sr_1_5?adgrpid=1238050438773692&hvadid=77378320683510&hvbmt=bp&hvdev=c&hvlocphy=111279&hvnetw=s&hvqmt=p&hvtargid=kwd-77378420155715%3Aloc-190&hydadcr=9279_13641273&mcid=0ed11c3b48fd384eb13fcc365913a001&sr=8-5])
 
-     -     Backpack port expander chip 8574A (or 8574)  
+    -  Backpack port expander chip 8574A (or 8574)  
 
-     -   SDA: Pin 5,  SCL: Pin 3
+    -  SDA: Pin 5,  SCL: Pin 3
 
 - **Software**: 
     
-       - ESP 32-IDF toolchain (version     5.3.3)
+   - ESP 32-IDF toolchain (version     5.3.3)
        
-       - OS: Ubuntu linux. 
+   - OS: Ubuntu linux. 
               
-       - IDE:  comand line and text editor
+   - IDE:  comand line and text editor
        
  Wiring Diagram:
  
@@ -61,7 +61,7 @@ I am an experienced embedded software engineer (and Professor) and I was shocked
 >         #define SLAVE_ADDRESS_LCD 0x3f      // 8574A
 >         #define SLAVE_ADDRESS_LCD 0x27      // 8574
 
-     - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
+    - Set up your GPIO pins according to your hardware connections.   To set according to my diagram above: 
 >	   // GPIO number used for I2C master clock
 >	   #define I2C_MASTER_SCL_IO           GPIO_NUM_3
 >	
